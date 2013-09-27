@@ -1,11 +1,13 @@
-<h1>Sign Up! </h1>
+<h1>Sign Up!</h1>
 
 <%= form_for @user do |f| %>
-<%= f.label :username, ' Username' %>
+<%= f.label :username, 'Username' %>
 <%= f.text_field :username %>
-<%= f.label :password, ' Password' %>
+<%= f.label :email , 'Email' %>
+<%= f.text_field :email %>
+<%= f.label :password, 'Password' %>
 <%= f.password_field :password %>
-<%= f.label :confirmation, ' Confirmation' %>
-<%= f.password_field :confirmation %>
+<%= f.label :password_confirmation, 'Confirmation' %>
+<%= f.password_field :password_confirmation %>
 <%= f.submit 'Create new account' %>
 <% end %>
