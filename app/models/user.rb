@@ -1,3 +1,9 @@
 class User < ActiveRecord::Base
-  attr_accessor :username, :password
+  has_secure_password
+  def attribute
+    @attribute
+  end
+  def attributes=(new_value)
+    @attribute = new_value
+  end
 end
