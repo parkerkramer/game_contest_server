@@ -1,12 +1,14 @@
 class User < ActiveRecord::Base
+  belongs_to :referees
+  belongs_to :players
+  belongs_to :contests
+  has_many :referees
   has_secure_password
   
-  has_many :referees
-  has_many :contests
-  has_many :players
+  validates :username, :presence => true, length: { maximum: 20 }, uniqueness: true
   
-  validates :username, :presence => true, uniqueness: true, :length => { :maximum => 20}
-  
-  VALID_EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-  validates :email, presence: true, format: {with: VALID_EMAIL_REGEX}
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
+                    
+  #attr_accessor :username, :email
 end

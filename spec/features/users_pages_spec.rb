@@ -22,6 +22,11 @@ describe "UsersPages" do
 	click_button submit
 	should have_alert(:danger)
       end
+
+      it "produces an error message" do
+	click_button submit
+	should have_alert(:danger)
+      end
     end
 
     describe "with valid information" do

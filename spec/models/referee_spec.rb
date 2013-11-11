@@ -14,4 +14,5 @@ describe Referee do
   describe "validations" do
     it { should be_valid }
   end
+
 end

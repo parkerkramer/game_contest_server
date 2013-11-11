@@ -1,9 +1,12 @@
 GameContestServer::Application.routes.draw do
+  
   resources :users
+  resources :referees
+  resources :sessions, only: [:new, :create, :destroy]
+  
   get 'signup', to: "users#new", as: 'signup'
   get 'login', to: "sessions#new", as: 'login'
-  resources :session, only: [:new, :create, :destroy]
-  delete 'logout', to: "sessions#destoy", as: 'logout'
+  delete 'logout', to: "sessions#destroy", as: 'logout'
   
   root 'users#index'
   # The priority is based upon order of creation: first created -> highest priority.

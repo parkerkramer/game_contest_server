@@ -33,7 +33,11 @@ FactoryGirl.define do
     start Time.now
     description "Contest Description Here"
     sequence(:name) { |i| "Contest #{i}" }
+
     type "Generic Contest Type"
+
+    contest_type "Generic Contest Type"
+
   end
 
   factory :match do
