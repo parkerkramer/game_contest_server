@@ -56,13 +56,19 @@ FactoryGirl.define do
 
     factory :contest_match do
       association :manager, factory: :contest
+
+      before(:create) do |match|
+	match.manager.referee.players_per_game.times do
+	  p = create(:player, contest: match.manager)
+	  create(:player_match, player: p, match: match)
+	end
+      end
     end
 
     factory :challenge_match do
       association :manager, factory: :referee
     end
   end
-
 
   factory :player do
     user
@@ -84,5 +90,13 @@ FactoryGirl.define do
     association :match, factory: :contest_match
     score 1.0
     result "Unknown Result"
+
+    factory :winning_match do
+      result "Win"
+    end
+
+    factory :losing_match do
+      result "Loss"
+    end
   end
 end
