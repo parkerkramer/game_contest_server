@@ -5,7 +5,8 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
-      cookies.signed[:user_id] = @user.id
+      #cookies.signed[:user_id] = @user.id
+      log_in(@user)
       flash[:success] = "#{@user.username} logged in"
       redirect_to @user  
     else
